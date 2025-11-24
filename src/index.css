@@ -1,9 +1,10 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+
+@import "tailwindcss";
 
 
 :root {
-   font-family: "Tiro Devanagari Sanskrit", serif;
+  font-family: "Tiro Devanagari Sanskrit", serif;
   font-weight: 400;
   font-style: normal;
 

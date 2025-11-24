@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -646,7 +647,6 @@
     }
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 :root {
   font-family: "Tiro Devanagari Sanskrit", serif;
   font-weight: 400;
