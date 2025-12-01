@@ -4,6 +4,7 @@ import './App.css'
 import NewPage from './newpage'
 import metadata from './metadata.json'
 
+
 // import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 
 
@@ -18,8 +19,19 @@ export default function App() {
 
   function buttonComponent({ val }) {
     return (
-      <button className='p-2 m-2 rounded bg-auto bg-amber-700' onClick={() => fetchData(chapter, verse)}> {val} </button>
+      <button className='p-2 m-2 text-xl w-full rounded bg-auto bg-amber-700' onClick={() => fetchData(chapter, verse)}> {val} </button>
     );
+  }
+
+  async function connectToDB() {
+    const url = "http://127.0.0.1:53813/server.php";
+
+    try {
+      await fetch(url).then((response) => console.log('Connected to the database server successfully.', response) ); 
+    }
+    catch (error) {
+      console.error('Error connecting to the database:', error);
+    }
   }
 
   async function fetchData(chapter = 2, verse = 2) {
@@ -63,19 +75,19 @@ export default function App() {
         <h1 className='text-3xl m-3'>Gita Verse Generator</h1>
         
         <div className="inline-grid w-full gap-4 grid-cols-2 items-center items">
-          <div className=" items-center col-start-1 bg-blue-300 text-white dark:bg-blue-600 dark:text-shadow-red-300 text-sm font-bold p-4 py-3 rounded" role="alert">
+          <div className="items-center col-start-1 bg-blue-300 text-white dark:bg-blue-600 dark:text-shadow-red-300 text-sm font-bold p-4 py-3 rounded" role="alert">
             {/* <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg> */}
-            <label htmlFor="chapternum">Chapter Number</label>
-            <select className='m-2 rounded backdrop-contrast-0' name="chapternum" id="" onChange={(event) => { setChapter(event.target.value) }}>
+            <label className='text-2xl' htmlFor="chapternum">Chapter Number</label>
+            <select className='m-2 rounded backdrop-contrast-0 w-fit text-xl' name="chapternum" id="" onChange={(event) => { setChapter(event.target.value) }}>
               {Object.keys(metadata.chapters).map((key) => (
-                <option className='bg' key={key} value={key} onClick={() => setChapter(key)}>{key}</option>
+                <option className='bg-zinc-600' key={key} value={key} onClick={() => setChapter(key)}>{key}</option>
               ))}
             </select>
-
-            <label htmlFor="versenum">Verse Number {
+              <br />
+            <label className='text-2xl' htmlFor="versenum">Verse Number {
             chapter ? ` (Max: ${metadata.chapters[chapter]})` : ''
             }</label>
-            <input className='m-2 rounded backdrop-contrast-0 placeholder-zinc-300' type="number" name='versenum' value={verse} onChange={(event) => { setVerse(event.target.value) }} />
+            <input className='m-2 rounded backdrop-contrast-0 w-fit text-xl placeholder-zinc-300' type="number" name='versenum' value={verse} onChange={(event) => { setVerse(event.target.value) }} />
             {buttonComponent({ val: 'Generate' })}
 
             {/* <a
@@ -89,6 +101,8 @@ export default function App() {
           <div className="p-4 col-start-2">
             <NewPage msg={data} />
           </div>
+
+          <button className='p-2 m-2 rounded bg-auto bg-red-900' onClick={() => connectToDB()}>Connect </button>
 
           {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
