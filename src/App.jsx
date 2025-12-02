@@ -23,11 +23,11 @@ export default function App() {
     );
   }
 
-  async function connectToDB() {
-    const url = "http://127.0.0.1:53813/server.php";
+  function connectToDB() {
+    const url = "http://localhost:30303/server.php";
 
     try {
-      await fetch(url).then((response) => console.log('Connected to the database server successfully.', response) ); 
+      fetch(url, {mode: 'no-cors'}).then((response) => console.log('Connected to the database server successfully.', response) ); 
     }
     catch (error) {
       console.error('Error connecting to the database:', error);
