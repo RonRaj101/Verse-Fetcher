@@ -14,8 +14,8 @@ $conn .= ";sslmode=verify-ca;sslrootcert=ca.pem";
 try {
   $db = new PDO($conn, $fields["user"], $fields["pass"]);
 
-  $stmt = $db->query("SELECT VERSION()");
-  print($stmt->fetch()[0]);
+  $stmt = $db->query("SELECT slug FROM chapters");
+  print($stmt->rowCount());
 } catch (Exception $e) {
   echo "Error: " . $e->getMessage();
 }

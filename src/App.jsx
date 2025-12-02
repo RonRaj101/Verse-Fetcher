@@ -24,9 +24,10 @@ export default function App() {
   }
 
   function connectToDB() {
-    const url = "http://localhost:30303/server.php";
+    const url = "http://localhost:3030/server.php";
 
     try {
+      //no-cors mode to avoid CORS issues during testing
       fetch(url, {mode: 'no-cors'}).then((response) => console.log('Connected to the database server successfully.', response) ); 
     }
     catch (error) {

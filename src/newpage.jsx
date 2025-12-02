@@ -20,7 +20,7 @@ export default function NewPage({ msg }) {
                                     <div class="w-full animate-pulse h-4 rounded bg-gray-300 mb-0.75"></div>
                                     <div class="w-3/4 animate-pulse h-4 rounded bg-gray-300 mb-0.5"></div>
                                 </h1>
-                             
+
                             </>)
                             }
                         </div>
